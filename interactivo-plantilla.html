@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/confetti.css">
+  <style>
+    #header {
+      background-color: #74e651;
+      border-radius: 10px;
+      padding: 5px;
+    }
+
+    .nav {
+      padding-right: 20px;
+    }
+
+    .nav ul li{
+      display:inline;
+      padding:0 10px
+    }
+
+    h1 {
+      text-align: center;
+      color: black;
+      margin: 8px;
+    }
+    #seccion {
+      display: flex;
+      flex-direction: row;
+      flex-wrap:wrap
+    }
+
+    .barra {
+      padding: 10px;
+      margin:5px;
+      background: aqua;
+      flex:3;
+      border-radius:10px;
+      display:flex;
+      flex-flow:column;
+      align-items:center;
+    }
+
+    .contenido {
+      padding: 10px;
+      border-radius:10px;
+      background: rgb(251,241,100);
+      margin:5px;
+      flex:1 150px;
+    }
+
+    .subcontenido2 {
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    #resultado {
+      display:flex;
+      flex-direction:column;
+      flex-wrap:wrap;
+      align-items: center;
+    }
+    
+    #footer {
+      background-color: white;
+      height: 100%;
+      text-align: center;
+      padding-top: 10px;
+      border-radius: 10px;
+      display:flex;
+      flex-flow:row;
+    }
+    .pie {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    #galeria{
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap; 
+      height:100px;
+    }
+
+    .proyecto{
+      
+      height:150px;
+      max-width:150px;
+      background-color:rgb(255, 255, 255);
+      border-radius:10px;
+      margin:10px;
+      flex:1 100px;
+    }
+
+    .barra a {
+      display:block;
+    }
+    #imagen-interactiva {
+      position: relative;
+      width: 300px;
+      height: 600px;
+      background-image: url('images/cuerpohumano.png');
+      background-size: cover;
+      border: 2px solid #000;
+      border-radius: 10px;
+    }
+
+    #hotspot1 {
+      position: absolute;
+      top: 200px;
+      left: 140px;
+      width: 40px;
+      height: 40px;
+      background-color: #0015ff80;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #hotspot2 {
+      position: absolute;
+      top: 250px;
+      left: 160px;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 21, 255, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .text-hotspot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-weight: bold;
+    }
+
+    #instrucciones {
+      flex:1;
+      cursor: pointer;
+    }
+
+    #prueba {
+      flex:1;
+      cursor:pointer;
+    }
+
+    .texto-rojo{
+            font-size:40px;
+            font-weight: bold;
+            color:red;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <div class="nav" style="text-align:center;">
+      <h3>Bienvenido a "Conociendo el cuerpo humano"</h3>
+    </div>
+  </div>
+  <div id="seccion">
+    <div class="barra">
+        <div id="imagen-interactiva">
+          <div id="hotspot1"><span class="text-hotspot">1</span></div>
+          <div id="hotspot2"><span class="text-hotspot">2</span></div>
+
+        </div>
+    </div>
+    <div class="contenido">
+      <div class="subcontenido1">
+        <h2 id="titulo-info">Instrucciones</h2>
+        <p id="texto-info">Haz click en cada uno de los puntos de la imagen para ver su descripción. Una vez visualizado el interactivo, realiza el test de conocimientos.</p>
+      </div>
+      <div class="subcontenido2">
+        <div class="proyecto">
+          <img id="imagen-info" src="images/hotspot-cursor.png" alt="Imagen info" style="width:100%; height:100%; border-radius:10px;">
+        </div>
+      </div>
+      <div id="resultado" class="invisible">
+        <h2>Tu resultado:</h2>
+        <span id="calif" class="texto-rojo">0/0</span>
+        <img id="imagen-resultado" width="200px" src="images/ping.gif" />
+      </div>      
+    </div>
+  </div>
+  <div id="footer">
+    <div id="instrucciones"><img width="100px" src="images/instrucciones.png" /></div>
+    <div id="prueba"><img width="100px" src="images/test.png" /></div>
+  </div>
+  <script type="text/javascript">
+    let puntaje = 0;
+    let pregunta1 = "";
+
+    document.getElementById('hotspot1').onclick = function() {
+      document.getElementById('titulo-info').textContent = 'Corazón';
+      document.getElementById('texto-info').textContent = 'El corazón es un órgano muscular que bombea sangre a través del sistema circulatorio mediante contracciones rítmicas.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/corazon.png');    
+    };
+
+    document.getElementById('hotspot2').onclick = function() {
+      document.getElementById('titulo-info').textContent = 'Estomago';
+      document.getElementById('texto-info').textContent = 'El estómago es un órgano del sistema digestivo que descompone los alimentos mediante ácidos y enzimas para facilitar la absorción de nutrientes.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/estomago.png');
+    };
+
+    document.getElementById('instrucciones').onclick = function(){
+      document.getElementById('titulo-info').textContent = 'Instrucciones';
+      document.getElementById('texto-info').textContent = 'Haz click en cada uno de los puntos de la imagen para ver su descripción. Una vez visualizado el interactivo, realiza el test de conocimientos.';
+      document.getElementById('imagen-info').setAttribute('src', 'images/hotspot-cursor.png');
+    };
+
+    document.getElementById('prueba').onclick = function(){
+      alert("Bienvenidos a la prueba de conocimientos");
+      alert("Responde correctamente todas las preguntas para ganar");
+
+      if(pregunta1 = prompt("¿Cuál es el organo más importante?")){
+            // Se eliminan espacios 
+            pregunta1 = pregunta1.trim();
+            
+        }
+        if (pregunta1.toLowerCase() === "corazón") {
+            alert("¡Correcto! El corazón es el organo más importante.");
+            puntaje += 1;
+        } else {
+            alert("Incorrecto. La respuesta correcta es: corazón.");
+        }
+
+        if(puntaje >= 1) {
+            alert("¡Felicidades! Has respondido correctamente todas las preguntas.");
+            //document.getElementById("fiesta").setAttribute("class", "visible");
+            document.getElementById("calif").textContent = puntaje + "/10";
+            document.getElementById("resultado").setAttribute("class", "visible");
+            
+        } else {
+            alert("Has respondido " + puntaje + " preguntas correctamente. ¡Sigue intentando!");
+
+        }
+    };
+  </script>
+</body>
+</html>
